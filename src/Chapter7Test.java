@@ -135,26 +135,27 @@ public class Chapter7Test extends JFrame {
 			case "Add":
 				answer = num1 + num2;
 				result = JOptionPane.showConfirmDialog(null, myPanel, "Addition tutor", JOptionPane.OK_CANCEL_OPTION);
-				userAnswer = Integer.parseInt(userAnswerField.getText());
 				break;
 			case "Subtract":
 				answer = num1 - num2;
 				result = JOptionPane.showConfirmDialog(null, myPanel, "Subtraction tutor",
 						JOptionPane.OK_CANCEL_OPTION);
-				userAnswer = Integer.parseInt(userAnswerField.getText());
 				break;
 			case "Multiply":
 				answer = num1 * num2;
 				result = JOptionPane.showConfirmDialog(null, myPanel, "Multiplication tutor",
 						JOptionPane.OK_CANCEL_OPTION);
-				userAnswer = Integer.parseInt(userAnswerField.getText());
 				break;
 			case "Divide":
 				answer = num3 / num1;
 				result = JOptionPane.showConfirmDialog(null, myPanel, "Division tutor", JOptionPane.OK_CANCEL_OPTION);
-				userAnswer = Integer.parseInt(userAnswerField.getText());
 				break;
 			}
+			if (result == JOptionPane.CANCEL_OPTION) {
+				break;
+			}
+			userAnswer = Integer.parseInt(userAnswerField.getText());
+
 			if (result == JOptionPane.OK_OPTION) {
 				if (userAnswer == answer) {
 					JOptionPane.showMessageDialog(null, "Correct, the answer is  " + answer, // message
@@ -179,16 +180,15 @@ public class Chapter7Test extends JFrame {
 					myPanel.updateUI();
 				}
 
-			} else {
-				correctAnswer = 5;
 			}
-
 		}
-		long lEndTime = System.nanoTime();
-		long output = (lEndTime - lStartTime) / 1000000000;
-		JOptionPane.showMessageDialog(null, "Time taken " + output + " Seconds", // message
-				"Time taken", // title
-				JOptionPane.PLAIN_MESSAGE);
+		if (correctAnswer == 4) {
+			long lEndTime = System.nanoTime();
+			long output = (lEndTime - lStartTime) / 1000000000;
+			JOptionPane.showMessageDialog(null, "Time taken " + output + " Seconds", // message
+					"Time taken", // title
+					JOptionPane.PLAIN_MESSAGE);
+		}
 
 	}
 
